@@ -133,7 +133,7 @@ export function ReportViewer({
     let execSummary = "";
     const keyFindings: string[] = [];
     const sections: { number: string; heading: string; content: string }[] = [];
-    let conclusion = "";
+    const conclusion = "";
 
     let currentNum = "";
     let currentHeading = "";
@@ -153,7 +153,7 @@ export function ReportViewer({
           });
         }
         currentNum = String(secCounter++);
-        currentHeading = trimmed.replace(/^##\s+/, "").replace(/^\d+[\.\)]\s*/, "");
+        currentHeading = trimmed.replace(/^##\s+/, "").replace(/^\d+[.)\s]*/, "");
         currentLines = [];
       } else if (currentHeading) {
         currentLines.push(line);
