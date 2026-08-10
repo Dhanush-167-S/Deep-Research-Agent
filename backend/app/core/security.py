@@ -13,6 +13,7 @@ async def get_current_user(
     cookie_token: str | None = Cookie(None, alias="better-auth.session_token"),
     secure_cookie_token: str | None = Cookie(None, alias="__Secure-better-auth.session_token"),
     session_token_header: str | None = Header(None, alias="X-Session-Token"),
+    query_token: str | None = Query(None, alias="token"),
     db: AsyncSession = Depends(get_db),
 ) -> User:
     """Validate Better Auth session token against PostgreSQL and resolve current user identity."""
@@ -25,6 +26,8 @@ async def get_current_user(
         token = secure_cookie_token
     elif session_token_header:
         token = session_token_header
+    elif query_token:
+        token = query_token
 
     if not token:
         raise HTTPException(

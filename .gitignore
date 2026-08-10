@@ -24,6 +24,7 @@ htmlcov/
 .env.development.local
 .env.test.local
 .env.production.local
+backend/.env.local.backup
 
 # IDE & System
 .vscode/

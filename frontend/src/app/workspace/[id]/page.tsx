@@ -173,12 +173,14 @@ function WorkspaceContent() {
 
   const handleExportPdf = () => {
     const url = getExportPdfUrl(sessionId);
-    window.open(url, "_blank");
+    const authUrl = token ? `${url}?token=${encodeURIComponent(token)}` : url;
+    window.open(authUrl, "_blank");
   };
 
   const handleExportMarkdown = () => {
     const url = getExportMarkdownUrl(sessionId);
-    window.open(url, "_blank");
+    const authUrl = token ? `${url}?token=${encodeURIComponent(token)}` : url;
+    window.open(authUrl, "_blank");
   };
 
   return (
